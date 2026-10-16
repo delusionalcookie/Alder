@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alder</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "@huggingface/transformers": "/vendor/transformers/dist/transformers.web.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">On this machine · 0.1.0</p>
+      <h1>File pictures and videos by kink.</h1>
+      <p class="lede">
+        Set the collection, then edit the kink list. Alder scores each file against that list and moves it into one folder. Anything that does not clear the slider goes to Unsorted. The first sort downloads the picture model. After that, sorting stays on this computer.
+      </p>
+      <section class="panel">
+        <label>
+          Collection
+          <span class="row">
+            <input id="collection" placeholder="Set this before sorting" />
+            <button id="choose" type="button">Choose</button>
+          </span>
+        </label>
+        <label>
+          Kinks, one per line
+          <textarea id="kinks" rows="8"></textarea>
+        </label>
+        <label>
+          How close a match must be
+          <span class="row slider">
+            <input id="threshold" type="range" min="0.15" max="0.35" step="0.01" value="0.22" />
+            <span id="threshold-value">0.22</span>
+          </span>
+        </label>
+        <label class="check"><input id="videos" type="checkbox" /> Sort videos from a few frames. Off, and every video goes to Unsorted.</label>
+        <label class="check"><input id="skip" type="checkbox" checked /> Skip files already named like img_Oral_NSFW_1.</label>
+        <div class="actions">
+          <button id="sort" class="primary" type="button">Sort a folder</button>
+          <button id="stop" type="button" hidden>Stop</button>
+        </div>
+        <p id="hint" class="hint">Set the collection before sorting. This is for an adult collection you already have.</p>
+        <div id="progress-wrap" hidden>
+          <div class="bar"><div id="bar"></div></div>
+          <p id="count"></p>
+          <p id="current"></p>
+          <p id="time"></p>
+        </div>
+        <p id="banner" class="banner" hidden></p>
+      </section>
+    </main>
+    <script type="module" src="/renderer.js"></script>
+  </body>
+</html>

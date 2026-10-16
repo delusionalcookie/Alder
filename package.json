@@ -1,0 +1,21 @@
+{
+  "name": "alder",
+  "version": "0.1.0",
+  "description": "Sort pictures and videos you already have into kink folders. Runs on your machine.",
+  "author": "Alder",
+  "private": true,
+  "type": "module",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test scripts/decide.test.mjs",
+    "pack": "node scripts/pack.mjs --linux AppImage --win zip"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.7.5"
+  },
+  "devDependencies": {
+    "electron": "^35.7.5",
+    "electron-builder": "^26.15.3"
+  }
+}
