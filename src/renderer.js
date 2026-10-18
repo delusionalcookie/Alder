@@ -51,12 +51,23 @@ thresholdInput.addEventListener("input", () => {
 });
 videosInput.addEventListener("change", () => localStorage.setItem("alder-videos", videosInput.checked ? "1" : "0"));
 skipInput.addEventListener("change", () => localStorage.setItem("alder-skip", skipInput.checked ? "1" : "0"));
-document.querySelector("#choose").addEventListener("click", async () => {
-  const picked = await window.alder.pickFolder();
-  if (!picked) return;
-  collectionInput.value = picked;
-  localStorage.setItem("alder-collection", picked);
-  syncSortButton();
+document.querySelector("#choose").addEventListener("click", async (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  if (!window.alder) {
+    showBanner("Open the Alder desktop app to choose a folder.");
+    return;
+  }
+  try {
+    const picked = await window.alder.pickFolder();
+    if (!picked) return;
+    collectionInput.value = picked;
+    localStorage.setItem("alder-collection", picked);
+    syncSortButton();
+    showBanner("");
+  } catch (error) {
+    showBanner(error instanceof Error ? error.message : "Could not open the folder list");
+  }
 });
 sortButton.addEventListener("click", () => void runSort());
 stopButton.addEventListener("click", () => {

@@ -304,12 +304,11 @@ function startUi() {
 
 function register() {
   ipcMain.handle("alder:pick-folder", async (event) => {
-    const window = BrowserWindow.fromWebContents(event.sender);
-    const result = await dialog.showOpenDialog(window ?? undefined, {
-      title: "Choose a folder",
-      properties: ["openDirectory"],
-    });
-    return result.canceled ? null : result.filePaths[0];
+    const parent = BrowserWindow.fromWebContents(event.sender);
+    await new Promise((resolve) => setTimeout(resolve, 120));
+    const options = { title: "Choose a folder", properties: ["openDirectory"] };
+    const result = parent ? await dialog.showOpenDialog(parent, options) : await dialog.showOpenDialog(options);
+    return result.canceled ? null : result.filePaths[0] ?? null;
   });
   ipcMain.handle("alder:list-files", (_event, root) => listFiles(root));
   ipcMain.handle("alder:read-bytes", async (_event, root, relative) => fs.promises.readFile(resolveInside(root, relative)));
@@ -363,6 +362,8 @@ async function openWindow(url) {
     app.exit(ready ? 0 : 1);
   }
 }
+
+app.setAppUserModelId("app.alder.desktop");
 
 const gotLock = app.requestSingleInstanceLock();
 if (!gotLock) {

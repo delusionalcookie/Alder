@@ -48,7 +48,7 @@ h1 {
   gap: 16px;
 }
 
-label { display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+label, .field { display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
 
 input, textarea, button {
   font: inherit;

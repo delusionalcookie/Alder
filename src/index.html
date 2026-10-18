@@ -15,19 +15,19 @@
   </head>
   <body>
     <main>
-      <p class="eyebrow">On this machine · 0.1.0</p>
+      <p class="eyebrow">On this machine · 0.1.1</p>
       <h1>File pictures and videos by kink.</h1>
       <p class="lede">
         Set the collection, then edit the kink list. Alder scores each file against that list and moves it into one folder. Anything that does not clear the slider goes to Unsorted. The first sort downloads the picture model. After that, sorting stays on this computer.
       </p>
       <section class="panel">
-        <label>
-          Collection
+        <div class="field">
+          <span>Collection</span>
           <span class="row">
-            <input id="collection" placeholder="Set this before sorting" />
+            <input id="collection" type="text" placeholder="Set this before sorting" />
             <button id="choose" type="button">Choose</button>
           </span>
-        </label>
+        </div>
         <label>
           Kinks, one per line
           <textarea id="kinks" rows="8"></textarea>

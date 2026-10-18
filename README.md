@@ -22,7 +22,7 @@ Set the collection before sorting. The sort then asks for the folder that holds 
 
 ## Desktop app
 
-Download the build from the [v0.1.0 release](https://github.com/delusionalcookie/Alder/releases/tag/v0.1.0).
+Download the build from the [v0.1.1 release](https://github.com/delusionalcookie/Alder/releases/tag/v0.1.1).
 
 - **Windows:** unzip and open `Alder.exe`. If SmartScreen appears, choose More info, then Run anyway. The app is not signed.
 - **Linux:** open the AppImage. If it does not start, allow the file to run as a program.
